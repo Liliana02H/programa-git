@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes | LOGIS-TECH</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="layout">
+        <!-- Sidebar — TODO EL CONTENIDO IGUAL, SOLO COLORES CORREGIDOS -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">LOGIS-TECH</div>
+            <a href="dashboard.html" class="activo">⚡ Inicio</a>
+            <a href="clientes.html">👥 Clientes</a>
+            <a href="productos.html">🏷️ Productos</a>
+            <a href="inventario.html">📋 Inventario</a>
+            <a href="pedidos.html">🛒 Pedidos</a>
+            <a href="reportes.html">📄 Reportes</a>
+            <a href="perfil.html">👤 Perfil</a>
+            <a href="ajustes.html">⚙️ Ajustes</a>
+            <a href="login.html" class="cerrar-sesion">🚪 Cerrar sesión</a>
+        </aside>
+        <main class="contenido-principal">
+            <div class="cabecera">
+                <h1>Panel de Reportes</h1>
+                <button class="btn-accion" style="background:var(--morado); color:white;">📄 Exportar PDF</button>
+            </div>
+
+            <div style="display:flex; gap:15px; margin-bottom:25px; flex-wrap:wrap;">
+                <button class="btn-accion" style="background:var(--verde-limon);">📊 Generar Reporte</button>
+                <select style="padding:10px 15px; border-radius:6px; border:1px solid var(--borde); background:var(--gris-claro);">
+                    <option>Todos los productos</option>
+                    <option>Ventas</option>
+                    <option>Inventario</option>
+                    <option>Clientes</option>
+                </select>
+            </div>
+
+            <div class="tarjetas">
+                <div class="tarjeta"><p>Productos Totales</p><h3>340</h3></div>
+                <div class="tarjeta"><p>Ventas del Mes</p><h3>128</h3></div>
+                <div class="tarjeta"><p>Crecimiento</p><h3>89%</h3></div>
+                <div class="tarjeta"><p>Bajo Inventario</p><h3>12</h3></div>
+            </div>
+
+            <div class="tabla-contenedor">
+                <h3>Historial de Reportes</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Producto</th>
+                            <th>Fecha</th>
+                            <th>Estado</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Laptop ASUS VivoBook</td>
+                            <td>24/05/2026</td>
+                            <td><span class="badge badge-exito">Completado</span></td>
+                            <td>$2.800.000</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Monitor Dell</td>
+                            <td>24/05/2026</td>
+                            <td><span class="badge badge-pendiente">Pendiente</span></td>
+                            <td>$800.000</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Impresora HP</td>
+                            <td>24/05/2026</td>
+                            <td><span class="badge badge-peligro">Cancelado</span></td>
+                            <td>$600.000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

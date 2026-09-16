@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | LOGIS-TECH</title>
+    <style>
+        /* ======================================================
+           🎨 COLORES ORIGINALES DEL PROYECTO + AJUSTES DE IMAGEN
+           ====================================================== */
+        :root {
+            --morado-principal: #6A0DAD;      /* Morado principal — logo, menú */
+            --verde-limon: #C7EA46;          /* Verde limón — elemento activo */
+            --blanco: #FFFFFF;               /* Fondo principal */
+            --gris-claro: #F4F4F4;           /* Tarjetas, formularios */
+            --gris-oscuro: #4A4A4A;          /* Texto, elementos secundarios */
+            --rojo-suave: #FF6B6B;           /* Mensajes de error / Cancelado */
+            --amarillo-activo: #C7EA46 ;      /* Amarillo-verde igual a tu imagen */
+            --texto-oscuro: #222222;         /* Texto sobre fondo claro */
+            /* Colores por estado */
+            --color-hecho: #28A745;
+            --color-pendiente: #FFC107;
+            --color-agotado: #6A0DAD;
+            --bg-hecho: #E8F5E9;
+            --bg-pendiente: #FFF8E1;
+            --bg-cancelado: #FFEBEE;
+            --bg-agotado: #F3E5F5;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: var(--blanco) !important; 
+            font-family: 'Segoe UI', sans-serif; 
+            color: var(--gris-oscuro);
+        }
+
+        .layout { display: flex; min-height: 100vh; }
+
+        /* ==============================================
+           🟣 SIDEBAR — IGUAL A TU IMAGEN
+           ============================================== */
+        .sidebar {
+            width: 280px;
+            background: var(--blanco) !important;
+            padding: 20px;
+            position: fixed;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            border-right: 1px solid #eee;
+        }
+
+        /* LOGO — Morado con bordes redondeados, letras blancas */
+        .sidebar-logo {
+            background: var(--morado-principal) !important;
+            color: var(--blanco) !important;
+            font-size: 26px;
+            font-weight: 800;
+            text-align: center;
+            padding: 18px 10px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Enlaces del menú — con iconos, igual a tu imagen */
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 18px;
+            color: var(--gris-oscuro);
+            text-decoration: none;
+            margin: 6px 0;
+            border-radius: 8px;
+            font-size: 18px;
+            transition: all 0.2s ease;
+        }
+
+        /* ✅ ELEMENTO ACTIVO — AMARILLO/VERDE LIMÓN IGUAL A TU IMAGEN */
+        .sidebar a.activo {
+            background: var(--amarillo-activo) !important;
+            color: var(--texto-oscuro) !important;
+            font-weight: 600;
+        }
+
+        .sidebar a:hover:not(.activo) {
+            background: rgba(106, 13, 173, 0.05);
+        }
+
+        .cerrar-sesion {
+            color: #999 !important;
+            margin-top: 30px !important;
+        }
+
+        /* Contenido principal — Fondo blanco */
+        .contenido-principal {
+            flex: 1;
+            margin-left: 280px;
+            padding: 35px 45px;
+            background: var(--blanco);
+        }
+
+        .cabecera {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 35px;
+        }
+
+        .buscador {
+            padding: 12px 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: var(--gris-claro);
+            font-size: 15px;
+            width: 340px;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: var(--morado-principal);
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        /* Tarjetas — Fondo gris claro #F4F4F4 */
+        .tarjetas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 22px;
+            margin-bottom: 30px;
+        }
+
+        .tarjeta {
+            background: var(--gris-claro);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+        }
+
+        .tarjeta p {
+            color: var(--gris-oscuro);
+            font-size: 14px;
+            margin-bottom: 8px;
+            opacity: 0.8;
+        }
+
+        .tarjeta h3 {
+            font-size: 40px;
+            color: var(--morado-principal);
+            font-weight: 800;
+        }
+
+        /* Botón — VERDE LIMÓN */
+        .btn-agregar {
+            width: 100%;
+            background: var(--verde-limon) !important;
+            color: #000000 !important;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-bottom: 30px;
+            transition: all 0.2s;
+        }
+
+        .btn-agregar:hover {
+            background: #b8d93d !important;
+        }
+
+        /* Tabla — Fondo gris claro */
+        .tabla-contenedor {
+            background: var(--gris-claro);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+        }
+
+        .tabla-cabecera {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .tabla-cabecera h3 {
+            font-size: 17px;
+            color: var(--morado-principal);
+            font-weight: 700;
+        }
+
+        table { width: 100%; border-collapse: collapse; }
+        th {
+            text-align: left;
+            padding: 14px 12px;
+            font-size: 13px;
+            color: var(--gris-oscuro);
+            font-weight: 600;
+            border-bottom: 2px solid #ddd;
+        }
+        td {
+            padding: 14px 12px;
+            font-size: 15px;
+            color: var(--gris-oscuro);
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Producto con icono */
+        .producto-con-icono {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .icono-producto {
+            width: 42px;
+            height: 42px;
+            border-radius: 8px;
+            background: rgba(106, 13, 173, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        /* Badges por estado */
+        .badge {
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .badge-hecho { background: var(--bg-hecho); color: var(--color-hecho); }
+        .badge-pendiente { background: var(--bg-pendiente); color: var(--color-pendiente); }
+        .badge-cancelado { background: var(--rojo-suave); color: #C0392B; }
+        .badge-agotado { background: var(--bg-agotado); color: var(--morado-principal); }
+
+        .acciones button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 0 4px;
+            color: var(--gris-oscuro);
+            transition: color 0.2s;
+        }
+        .acciones button:hover { color: var(--morado-principal); }
+   </style>
+</head>
+<body>
+    <div class="layout">
+        <!-- Sidebar — TODO EL CONTENIDO IGUAL, SOLO COLORES CORREGIDOS -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">LOGIS-TECH</div>
+            <a href="dashboard.html" class="activo">⚡ Inicio</a>
+            <a href="clientes.html">👥 Clientes</a>
+            <a href="productos.html">🏷️ Productos</a>
+            <a href="inventario.html">📋 Inventario</a>
+            <a href="pedidos.html">🛒 Pedidos</a>
+            <a href="reportes.html">📄 Reportes</a>
+            <a href="perfil.html">👤 Perfil</a>
+            <a href="ajustes.html">⚙️ Ajustes</a>
+            <a href="login.html" class="cerrar-sesion">🚪 Cerrar sesión</a>
+        </aside>
+
+        <!-- Contenido Principal -->
+        <main class="contenido-principal">
+            <div class="cabecera">
+                <input type="text" class="buscador" placeholder="Buscar productos...">
+            </div>
+
+            <h1>Gestión de Productos</h1>
+
+            <!-- Tarjetas -->
+            <div class="tarjetas">
+                <div class="tarjeta">
+                    <p>Productos Totales</p>
+                    <h3>340</h3>
+                </div>
+                <div class="tarjeta">
+                    <p>Productos Agotados</p>
+                    <h3>12</h3>
+                </div>
+                <div class="tarjeta">
+                    <p>Pedidos Completados</p>
+                    <h3>245</h3>
+                </div>
+                <div class="tarjeta">
+                    <p>Pedidos Pendientes</p>
+                    <h3>28</h3>
+                </div>
+            </div>
+
+            <button class="btn-agregar">+ Agregar Producto</button>
+
+            <!-- Tabla con iconos de cada producto -->
+            <div class="tabla-contenedor">
+                <div class="tabla-cabecera">
+                    <h3>Movimientos Recientes</h3>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>PRODUCTO</th>
+                            <th>ESTADO</th>
+                            <th>PRECIO/TOTAL</th>
+                            <th>ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><div class="producto-con-icono"><span class="icono-producto">💻</span><span>Laptop ASUS Vivobook 15"</span></div></td>
+                            <td><span class="badge badge-hecho">Hecho</span></td>
+                            <td>$3.800.000 COP</td>
+                            <td class="acciones"><button>👁️</button><button>✏️</button><button>🗑️</button></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><div class="producto-con-icono"><span class="icono-producto">🪑</span><span>Escritorio de Oficina Modular</span></div></td>
+                            <td><span class="badge badge-pendiente">Pendiente</span></td>
+                            <td>$1.050.000 COP</td>
+                            <td class="acciones"><button>👁️</button><button>✏️</button><button>🗑️</button></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><div class="producto-con-icono"><span class="icono-producto">💺</span><span>Silla Ergonómica Pro</span></div></td>
+                            <td><span class="badge badge-hecho">Hecho</span></td>
+                            <td>$612.000 COP</td>
+                            <td class="acciones"><button>👁️</button><button>✏️</button><button>🗑️</button></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><div class="producto-con-icono"><span class="icono-producto">🖨️</span><span>Impresora HP LaserJet Pro</span></div></td>
+                            <td><span class="badge badge-cancelado">Cancelado</span></td>
+                            <td>$313.000 COP</td>
+                            <td class="acciones"><button>👁️</button><button>✏️</button><button>🗑️</button></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><div class="producto-con-icono"><span class="icono-producto">🖥️</span><span>Monitor Dell 24" Full HD</span></div></td>
+                            <td><span class="badge badge-hecho">Hecho</span></td>
+                            <td>$412.000 COP</td>
+                            <td class="acciones"><button>👁️</button><button>✏️</button><button>🗑️</button></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td><div class="producto-con-icono"><span class="icono-producto">⌨️</span><span>Teclado Mecánico RGB Gamer</span></div></td>
+                            <td><span class="badge badge-agotado">Agotado</span></td>
+                            <td>$333.000 COP</td>
+                            <td class="acciones"><button>👁️</button><button>✏️</button><button>🗑️</button></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td><div class="producto-con-icono"><span class="icono-producto">🖱️</span><span>Mouse Inalámbrico Ergonómico</span></div></td>
+                            <td><span class="badge badge-pendiente">Pendiente</span></td>
+                            <td>$89.000 COP</td>
+                            <td class="acciones"><button>👁️</button><button>✏️</button><button>🗑️</button></td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td><div class="producto-con-icono"><span class="icono-producto">💾</span><span>Disco SSD 1TB Kingston</span></div></td>
+                            <td><span class="badge badge-hecho">Hecho</span></td>
+                            <td>$245.000 COP</td>
+                            <td class="acciones"><button>👁️</button><button>✏️</button><button>🗑️</button></td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td><div class="producto-con-icono"><span class="icono-producto">📷</span><span>Cámara Web HD 1080p</span></div></td>
+                            <td><span class="badge badge-cancelado">Cancelado</span></td>
+                            <td>$156.000 COP</td>
+                            <td class="acciones"><button>👁️</button><button>✏️</button><button>🗑️</button></td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td><div class="producto-con-icono"><span class="icono-producto">🎧</span><span>Auriculares con Micrófono</span></div></td>
+                            <td><span class="badge badge-agotado">Agotado</span></td>
+                            <td>$128.000 COP</td>
+                            <td class="acciones"><button>👁️</button><button>✏️</button><button>🗑️</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

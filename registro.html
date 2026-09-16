@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Cuenta | LOGIS-TECH</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* SOLO para esta pantalla — NO afecta otras */
+        .contenedor-centro {
+            background: linear-gradient(135deg, #9370DB 0%, #B8A0E0 100%) !important;
+        }
+
+        .tarjeta-auth {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        h1 {
+            color: #333 !important;
+            font-weight: 600 !important;
+            margin-bottom: 30px !important;
+        }
+
+        .fila-doble {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 15px !important;
+        }
+
+        .grupo-input label {
+            color: #666 !important;
+            font-weight: 500 !important;
+            margin-bottom: 8px !important;
+        }
+
+        .grupo-input input {
+            border: 1px solid #ddd !important;
+            border-radius: 8px !important;
+            padding: 14px 16px !important;
+            font-size: 15px !important;
+            background: #fff !important;
+        }
+
+        .btn-registrar {
+            background: #C7EA46 !important;
+            color: #222 !important;
+            font-weight: 600 !important;
+            font-size: 16px !important;
+            padding: 14px !important;
+            border-radius: 8px !important;
+            border: none !important;
+            cursor: pointer !important;
+            width: 100% !important;
+            margin-top: 10px !important;
+        }
+
+        .btn-registrar:hover {
+            opacity: 0.95 !important;
+        }
+
+        .enlace-inicio {
+            text-align: center !important;
+            margin-top: 20px !important;
+            font-size: 14px !important;
+        }
+
+        .enlace-inicio a {
+            color: #333 !important;
+            text-decoration: none !important;
+            border-bottom: 1px solid #999 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor-centro">
+        <div class="tarjeta-auth">
+            <!-- Logo -->
+            <div style="text-align: center; margin-bottom: 25px;">
+                <div style="display: inline-flex; align-items: center; gap: 10px;">
+                    <div style="width: 40px; height: 40px; background: #6A0DAD; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px;">
+                        ▦
+                    </div>
+                    <span style="font-size: 22px; font-weight: 600; color: #222;">LOGIS-TECH</span>
+                </div>
+            </div>
+
+            <h1>Crear Cuenta</h1>
+
+            <form>
+                <!-- Nombre y Teléfono en la misma fila -->
+                <div class="fila-doble">
+                    <div class="grupo-input">
+                        <label>Nombre Completo</label>
+                        <input type="text" placeholder="" required>
+                    </div>
+                    <div class="grupo-input">
+                        <label>Teléfono</label>
+                        <input type="tel" placeholder="">
+                    </div>
+                </div>
+
+                <!-- Correo Electrónico -->
+                <div class="grupo-input">
+                    <label>Correo Electrónico</label>
+                    <input type="email" placeholder="" required>
+                </div>
+
+                <!-- Contraseña -->
+                <div class="grupo-input">
+                    <label>Contraseña</label>
+                    <input type="password" placeholder="" required>
+                </div>
+
+                <!-- Confirmar Contraseña -->
+                <div class="grupo-input">
+                    <label>Confirmar Contraseña</label>
+                    <input type="password" placeholder="" required>
+                </div>
+
+                <!-- Botón Registrarme — VERDE LIMÓN -->
+                <button type="button" class="btn-registrar" onclick="window.location.href='login.html'">
+                    Registrarme
+                </button>
+            </form>
+
+            <!-- Enlace a Iniciar Sesión -->
+            <div class="enlace-inicio">
+                <a href="login.html">¿Ya tienes cuenta? Inicia sesión</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

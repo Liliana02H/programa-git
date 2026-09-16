@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario | LOGIS-TECH</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="layout">
+        <!-- Sidebar — TODO EL CONTENIDO IGUAL, SOLO COLORES CORREGIDOS -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">LOGIS-TECH</div>
+            <a href="dashboard.html" class="activo">⚡ Inicio</a>
+            <a href="clientes.html">👥 Clientes</a>
+            <a href="productos.html">🏷️ Productos</a>
+            <a href="inventario.html">📋 Inventario</a>
+            <a href="pedidos.html">🛒 Pedidos</a>
+            <a href="reportes.html">📄 Reportes</a>
+            <a href="perfil.html">👤 Perfil</a>
+            <a href="ajustes.html">⚙️ Ajustes</a>
+            <a href="login.html" class="cerrar-sesion">🚪 Cerrar sesión</a>
+        </aside>
+
+        <main class="contenido-principal">
+            <div class="cabecera">
+                <input type="text" class="buscador" placeholder="Título del inventario..." style="width:100%; max-width:400px;">
+            </div>
+
+            <h2>Laptop ASUS VivoBook</h2>
+
+            <div class="pestañas">
+                <div class="pestaña activa">Información</div>
+                <div class="pestaña">Movimientos</div>
+                <div class="pestaña">Historial</div>
+            </div>
+
+            <div class="tabla-acciones-superior">
+                <button class="btn-accion" style="background:var(--verde-limon);">Detalles</button>
+                <button class="btn-accion" style="background:var(--rojo-suave); color:white;">Eliminar</button>
+            </div>
+
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>PRODUCTO</th>
+                            <th>CATEGORÍA</th>
+                            <th>PRECIO</th>
+                            <th>STOCK</th>
+                            <th>ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Laptop ASUS VivoBook</td>
+                            <td>Laptops</td>
+                            <td>$3.000.000</td>
+                            <td><span class="badge badge-stock">En stock</span></td>
+                            <td class="acciones"><button>📄</button><button>👁️</button><button>✏️</button><button>🗑️</button></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Mouse Inalámbrico Logitech</td>
+                            <td>Útiles</td>
+                            <td>$1.000.000</td>
+                            <td><span class="badge badge-stock">En stock</span></td>
+                            <td class="acciones"><button>📄</button><button>👁️</button><button>✏️</button><button>🗑️</button></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Silla Ergonómica de Oficina</td>
+                            <td>Laptops</td>
+                            <td>$2.250.000</td>
+                            <td><span class="badge badge-stock">En stock</span></td>
+                            <td class="acciones"><button>📄</button><button>👁️</button><button>✏️</button><button>🗑️</button></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Impresora HP LaserJet</td>
+                            <td>Fusión</td>
+                            <td>$2.090.000</td>
+                            <td><span class="badge badge-stock">En stock</span></td>
+                            <td class="acciones"><button>📄</button><button>👁️</button><button>✏️</button><button>🗑️</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

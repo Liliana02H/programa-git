@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil | LOGIS-TECH</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="sidebar-logo">LOGIS-TECH</div>
+            <a href="dashboard.html">🏠 Inicio</a>
+            <a href="perfil.html" class="activo">👤 Perfil</a>
+            <a href="configuracion.html">⚙️ Ajustes</a>
+            <a href="login.html" style="color:var(--rojo-suave);">🚪 Cerrar sesión</a>
+        </aside>
+
+        <main class="contenido-principal">
+            <h1>Mi Perfil</h1>
+            <div class="tabla-contenedor">
+                <div style="display:flex; align-items:center; gap:25px; margin-bottom:30px; flex-wrap:wrap;">
+                    <div style="width:100px; height:100px; background:var(--morado); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:40px; color:white;">👤</div>
+                    <div>
+                        <h2>Juan Pérez</h2>
+                        <p style="color:var(--gris-oscuro);">Administrador • juan@logis-tech.com</p>
+                    </div>
+                </div>
+                <form>
+                    <div class="fila-doble">
+                        <div class="grupo-input">
+                            <label>Nombre Completo</label>
+                            <input type="text" value="Juan Pérez">
+                        </div>
+                        <div class="grupo-input">
+                            <label>Teléfono</label>
+                            <input type="tel" value="312 123 4567">
+                        </div>
+                    </div>
+                    <div class="grupo-input">
+                        <label>Correo Electrónico</label>
+                        <input type="email" value="juan@logis-tech.com">
+                    </div>
+                    <div class="grupo-input">
+                        <label>Rol</label>
+                        <input type="text" value="Administrador" disabled>
+                    </div>
+                    <button type="button" class="btn btn-morado">Guardar Cambios</button>
+                </form>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

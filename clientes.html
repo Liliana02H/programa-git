@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios | LOGIS-TECH</title>
+    <style>
+        /* ======================================================
+           🎨 COLORES ORIGINALES DEL PROYECTO — TAL CUAL LA TABLA
+           ====================================================== */
+        :root {
+            --morado-principal: #6A0DAD;      /* Morado principal — logo, menú, títulos */
+            --verde-limon: #C7EA46;          /* Verde limón — botones, elemento activo */
+            --blanco: #FFFFFF;               /* Fondo principal */
+            --gris-claro: #F4F4F4;           /* Tarjetas, formularios */
+            --gris-oscuro: #4A4A4A;          /* Texto, elementos secundarios */
+            --rojo-suave: #FF6B6B;           /* Mensajes de error / Cancelado */
+            /* Colores de estado */
+            --color-activo: #28A745;
+            --color-pendiente: #FFC107;
+            --bg-activo: #E8F5E9;
+            --bg-pendiente: #FFF8E1;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: var(--blanco) !important; 
+            font-family: 'Segoe UI', sans-serif; 
+            color: var(--gris-oscuro);
+        }
+
+        .layout { display: flex; min-height: 100vh; }
+
+        /* ==============================================
+           🟣 SIDEBAR — IGUAL A TU DISEÑO
+           ============================================== */
+        .sidebar {
+            width: 240px;
+            background: #F4F4F4 !important;
+            padding: 20px 15px;
+            position: fixed;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            border-right: 1px solid #eee;
+        }
+
+        .sidebar-logo {
+            background: var(--morado-principal) !important;
+            color: var(--blanco) !important;
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 30px;
+            border-radius: 6px;
+        }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            color: var(--gris-oscuro);
+            text-decoration: none;
+            margin: 4px 0;
+            border-radius: 6px;
+            font-size: 15px;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar a.activo {
+            background: var(--verde-limon) !important;
+            color: var(--gris-oscuro) !important;
+            font-weight: 700;
+        }
+    
+.sidebar a:hover:not(.activo) {
+    background:rgba(106,13,173,0.05);
+    color:var(--morado-principal);
+      }
+        .cerrar-sesion {
+            color: #999 !important;
+            margin-top: 20px !important;
+        }
+
+        /* ==============================================
+           📋 CONTENIDO PRINCIPAL
+           ============================================== */
+        .contenido-principal {
+            flex: 1;
+            margin-left: 240px;
+            padding: 30px 40px;
+            background: var(--blanco);
+        }
+
+        .cabecera-pagina {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+
+        .titulo-pagina h1 {
+            font-size: 26px;
+            color: var(--morado-principal);
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .titulo-pagina p {
+            color: var(--gris-oscuro);
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .btn-nuevo {
+            background: var(--verde-limon) !important;
+            color: #000000 !important;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Tarjetas de estadísticas */
+        .tarjetas-estadisticas {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 35px;
+            max-width: 700px;
+        }
+
+        .tarjeta-estadistica {
+            background: var(--blanco);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0,06);
+            text-align: center;
+        }
+
+        .tarjeta-estadistica .icono {
+            font-size: 28px;
+            color: var(--morado-principal);
+            margin-bottom: 8px;
+        }
+
+        .tarjeta-estadistica .numero {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--morado-principal);
+            margin-bottom: 4px;
+        }
+
+        .tarjeta-estadistica .etiqueta {
+            font-size: 13px;
+            color: var(--gris-oscuro);
+            opacity: 0.8;
+        }
+
+        /* Barra de búsqueda y filtros */
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .buscador {
+            padding: 10px 16px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: var(--gris-claro);
+            font-size: 14px;
+            width: 240px;
+        }
+
+        .filtro {
+            padding: 10px 16px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: var(--blanco);
+            font-size: 14px;
+            color: var(--gris-oscuro);
+        }
+
+        /* Tabla de usuarios */
+        .tabla-contenedor {
+            width: 100%;
+        }
+
+        table { width: 100%; border-collapse: separate; border-spacing: 0; }
+        th {
+            text-align: left;
+            padding: 12px 15px;
+            font-size: 14px;
+            color: var(--gris-oscuro);
+            font-weight: 600;
+            border-bottom: 2px solid #eee;
+        }
+        td {
+            padding: 15px;
+            font-size: 14px;
+            color: var(--gris-oscuro);
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: middle;
+        }
+
+        /* Columna Usuario — Foto + Nombre */
+        .usuario-fila {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--gris-claro);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            overflow: hidden;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Badges de Estado */
+        .badge {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            display: inline-block;
+        }
+        .badge-activo { background: var(--bg-activo); color: var(--color-activo); }
+        .badge-pendiente { background: var(--bg-pendiente); color: var(--color-pendiente); }
+
+        /* Acciones */
+        .acciones button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0 4px;
+            color: var(--gris-oscuro);
+            transition: color 0.2s;
+        }
+        .acciones button:hover { color: var(--morado-principal); }
+        .acciones .btn-eliminar:hover { color: var(--rojo-suave); }
+   </style>
+</head>
+<body>
+    <div class="layout">
+        <!-- Sidebar — TODO EL CONTENIDO IGUAL, SOLO COLORES CORREGIDOS -->
+         <aside class="sidebar">
+            <div class="sidebar-logo">LOGIS-TECH</div>
+            <a href="dashboard.html">🏠 Inicio</a>
+            <a href="clientes.html">👥 Clientes</a>
+            <a href="productos.html">🏷️ Productos</a>
+            <a href="inventario.html">📋 Inventario</a>
+            <a href="pedidos.html">🛒 Pedidos</a>
+            <a href="reportes.html">📄 Reportes</a>
+            <a href="perfil.html">👤 Perfil</a>
+            <a href="ajustes.html">⚙️ Ajustes</a>
+            <a href="login.html" class="cerrar-sesion">🚪 Cerrar sesión</a>
+        </aside>
+
+        <!-- ==============================================
+             📋 CONTENIDO — IGUAL A TU IMAGEN
+             ============================================== -->
+        <main class="contenido-principal">
+            <!-- Cabecera -->
+            <div class="cabecera-pagina">
+                <div class="titulo-pagina">
+                    <h1>Gestión de Usuarios</h1>
+                    <p>Administra los usuarios del sistema</p>
+                </div>
+                <button class="btn-nuevo">➕ Nuevo Usuario</button>
+            </div>
+
+            <!-- Tarjetas de estadísticas -->
+            <div class="tarjetas-estadisticas">
+                <div class="tarjeta-estadistica">
+                    <div class="icono">👥</div>
+                    <div class="numero">120</div>
+                    <div class="etiqueta">Usuarios Totales</div>
+                </div>
+                <div class="tarjeta-estadistica">
+                    <div class="icono">👤</div>
+                    <div class="numero">98</div>
+                    <div class="etiqueta">Usuarios Activos</div>
+                </div>
+                <div class="tarjeta-estadistica">
+                    <div class="icono">🔄</div>
+                    <div class="numero">22</div>
+                    <div class="etiqueta">Pendientes</div>
+                </div>
+            </div>
+
+            <!-- Buscador + Filtro -->
+            <div class="barra-superior">
+                <input type="text" class="buscador" placeholder="Buscar usuario...">
+                <select class="filtro">
+                    <option>Todos</option>
+                    <option>Activos</option>
+                    <option>Pendientes</option>
+                </select>
+            </div>
+
+            <!-- Tabla de Usuarios -->
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Usuario</th>
+                            <th>Correo</th>
+                            <th>Rol</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="usuario-fila">
+                                    <div class="avatar">👨</div>
+                                    <span>Juan Pérez</span>
+                                </div>
+                            </td>
+                            <td>juan@gmail.com</td>
+                            <td>Administrador</td>
+                            <td><span class="badge badge-activo">Activo</span></td>
+                            <td class="acciones">
+                                <button>👁️</button>
+                                <button>✏️</button>
+                                <button class="btn-eliminar">🗑️</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="usuario-fila">
+                                    <div class="avatar">👩</div>
+                                    <span>Laura Gómez</span>
+                                </div>
+                            </td>
+                            <td>laura@gmail.com</td>
+                            <td>Empleado</td>
+                            <td><span class="badge badge-pendiente">Pendiente</span></td>
+                            <td class="acciones">
+                                <button>👁️</button>
+                                <button>✏️</button>
+                                <button class="btn-eliminar">🗑️</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="usuario-fila">
+                                    <div class="avatar">👨</div>
+                                    <span>Carlos Ruiz</span>
+                                </div>
+                            </td>
+                            <td>carlos@gmail.com</td>
+                            <td>Supervisor</td>
+                            <td><span class="badge badge-activo">Activo</span></td>
+                            <td class="acciones">
+                                <button>👁️</button>
+                                <button>✏️</button>
+                                <button class="btn-eliminar">🗑️</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

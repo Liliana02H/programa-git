@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIS-TECH | Inicio</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* SOLO para esta pantalla — NO afecta otras */
+        .contenedor-centro {
+            background: linear-gradient(135deg, #9370DB 0%, #B8A0E0 100%) !important;
+        }
+
+        .tarjeta-inicio {
+            background: #FFFFFF;
+            padding: 50px 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+        }
+
+        .logo-contenedor {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .logo-icono {
+            width: 45px;
+            height: 45px;
+            background: #6A0DAD;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 22px;
+        }
+
+        .logo-texto {
+            font-size: 26px;
+            font-weight: 700;
+            color: #222;
+        }
+
+        h2 {
+            font-size: 22px;
+            color: #222;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .descripcion {
+            color: #777;
+            font-size: 15px;
+            margin-bottom: 35px;
+            line-height: 1.5;
+        }
+
+        .btn-verde-inicio {
+            width: 100%;
+            padding: 14px;
+            background: #C7EA46;
+            color: #222;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 15px;
+            transition: opacity 0.2s;
+        }
+
+        .btn-verde-inicio:hover {
+            opacity: 0.95;
+        }
+
+        .btn-morado-inicio {
+            width: 100%;
+            padding: 14px;
+            background: #6A0DAD;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .btn-morado-inicio:hover {
+            opacity: 0.95;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor-centro">
+        <div class="tarjeta-inicio">
+            <!-- Logo igual al de Iniciar Sesión -->
+            <div class="logo-contenedor">
+                <div class="logo-icono">▦</div>
+                <span class="logo-texto">LOGIS-TECH</span>
+            </div>
+
+            <h2>Sistema de Gestión Logística</h2>
+            <p class="descripcion">Controla inventario, pedidos, usuarios y reportes en un solo lugar</p>
+
+            <button class="btn-verde-inicio" onclick="window.location.href='login.html'">Iniciar Sesión</button>
+            <button class="btn-morado-inicio" onclick="window.location.href='registro.html'">Crear Cuenta Nueva</button>
+        </div>
+    </div>
+</body>
+</html>

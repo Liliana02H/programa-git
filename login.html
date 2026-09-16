@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión | LOGIS-TECH</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Solo ajustes de esta pantalla — NO afecta otras pantallas */
+        .contenedor-centro {
+            background: linear-gradient(135deg, #9370DB 0%, #B8A0E0 100%) !important;
+        }
+
+        .checkbox-grupo {
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+            margin-bottom: 25px !important;
+            color: #333 !important;
+            font-size: 15px !important;
+        }
+
+        .checkbox-grupo input[type="checkbox"] {
+            width: 18px !important;
+            height: 18px !important;
+            accent-color: #6A0DAD !important;
+            cursor: pointer !important;
+            margin: 0 !important;
+        }
+
+        .checkbox-grupo label {
+            margin: 0 !important;
+            cursor: pointer !important;
+            color: #333 !important;
+            font-weight: normal !important;
+        }
+
+        .tarjeta-auth {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .input-contrasena {
+            position: relative;
+        }
+
+        .input-contrasena i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor-centro">
+        <div class="tarjeta-auth">
+            <!-- LOGIS-TECH -->
+            <div style="text-align: center; margin-bottom: 30px;">
+                <div style="display: inline-flex; align-items: center; gap: 10px;">
+                    <div style="width: 45px; height: 45px; background: #6A0DAD; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: white; font-size: 22px;">
+                        ▦
+                    </div>
+                    <span style="font-size: 24px; font-weight: 600; color: #222;">LOGIS-TECH</span>
+                </div>
+            </div>
+
+            <h1 style="color: #000; font-size: 28px; margin-bottom: 30px; font-weight: 600;">Iniciar Sesión</h1>
+
+            <form>
+                <!-- Correo Electrónico -->
+                <div class="grupo-input">
+                    <label style="color: #666; font-weight: 500; margin-bottom: 8px;">Correo Electrónico</label>
+                    <input type="email" placeholder="usuario@correo.com" required style="border-radius: 8px; border: 1px solid #ddd; padding: 14px 16px; font-size: 15px; background: #fff;">
+                </div>
+
+                <!-- Contraseña con ícono de ojo -->
+                <div class="grupo-input">
+                    <label style="color: #666; font-weight: 500; margin-bottom: 8px;">Contraseña</label>
+                    <div class="input-contrasena">
+                        <input type="password" placeholder="••••••" required id="clave" style="border-radius: 8px; border: 1px solid #ddd; padding: 14px 16px; font-size: 15px; background: #fff; padding-right: 45px;">
+                        <i onclick="mostrarContrasena()" id="ojo">👁️</i>
+                    </div>
+                </div>
+
+                <!-- Mantener sesión iniciada — CORREGIDO -->
+                <div class="checkbox-grupo">
+                    <input type="checkbox" id="recordar" checked>
+                    <label for="recordar">Mantener sesión iniciada</label>
+                </div>
+
+                <!-- Botón verde limón -->
+                <button type="button" class="btn" style="background: #C7EA46; color: #222; font-weight: 600; font-size: 16px; padding: 15px; border-radius: 10px; border: none; cursor: pointer;" onclick="window.location.href='dashboard.html'">
+                    Iniciar Sesión
+                </button>
+            </form>
+
+            <!-- Enlaces inferiores -->
+            <div class="enlaces" style="margin-top: 25px; font-size: 15px;">
+                <a href="recuperar.html" style="color: #333; text-decoration: none; border-bottom: 1px solid #999;">¿Olvidó su contraseña?</a>
+                <span style="color: #999; margin: 0 8px;">•</span>
+                <a href="registro.html" style="color: #333; text-decoration: none; border-bottom: 1px solid #999;">Crear una cuenta</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script para mostrar/ocultar contraseña -->
+    <script>
+        function mostrarContrasena() {
+            const input = document.getElementById('clave');
+            const ojo = document.getElementById('ojo');
+            if (input.type === 'password') {
+                input.type = 'text';
+                ojo.textContent = '🙈';
+            } else {
+                input.type = 'password';
+                ojo.textContent = '👁️';
+            }
+        }
+    </script>
+</body>
+</html>

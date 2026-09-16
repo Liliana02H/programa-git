@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos | LOGIS-TECH</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="sidebar-logo">LOGIS-TECH</div>
+            <a href="dashboard.html">🏠 Inicio</a>
+            <a href="clientes.html">👥 Clientes</a>
+            <a href="productos.html" class="activo">📦 Productos</a>
+            <a href="inventario.html">📊 Inventario</a>
+            <a href="pedidos.html">🛒 Pedidos</a>
+            <a href="reportes.html">📄 Reportes</a>
+            <a href="login.html" style="color:var(--rojo-suave);">🚪 Cerrar sesión</a>
+        </aside>
+
+        <main class="contenido-principal">
+            <div class="cabecera">
+                <h1>Gestión de Productos</h1>
+                <button class="btn-accion" style="background:var(--verde-limon);">➕ Nuevo Producto</button>
+            </div>
+
+            <div class="tarjetas">
+                <div class="tarjeta"><p>Total Productos</p><h3>340</h3></div>
+                <div class="tarjeta"><p>Disponibles</p><h3>328</h3></div>
+                <div class="tarjeta"><p>Agotados</p><h3>12</h3></div>
+                <div class="tarjeta"><p>Categorías</p><h3>8</h3></div>
+            </div>
+
+            <div class="tabla-contenedor">
+                <input type="text" class="buscador" placeholder="Buscar producto..." style="margin-bottom:20px; width:100%;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Producto</th>
+                            <th>Categoría</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Laptop ASUS VivoBook</td>
+                            <td>Electrónica</td>
+                            <td>$2.800.000</td>
+                            <td>15</td>
+                            <td><span class="badge badge-exito">Disponible</span></td>
+                            <td class="acciones"><button>👁️</button><button>✏️</button><button>🗑️</button></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Escritorio de Oficina</td>
+                            <td>Muebles</td>
+                            <td>$1.050.000</td>
+                            <td>0</td>
+                            <td><span class="badge badge-peligro">Agotado</span></td>
+                            <td class="acciones"><button>👁️</button><button>✏️</button><button>🗑️</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
